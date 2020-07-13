@@ -1,0 +1,23 @@
+language: python
+python:
+  - "3.7.3"
+
+stages:
+  - name: test
+  - name: deploy
+
+jobs:
+  include:
+    - stage: test
+      name: Unit Tests
+      script: python manage.py test
+    - stage: deploy
+      name: Heroku Deploy
+      script: /bin/true
+      deploy:
+        provider: heroku
+        api_key:
+          secure: MIGJAoGBAKY1mJtfyxF51Z8XSE4q/kLixEUegc4UGyP0lTH/URfJ3Yg7HzNwOXNg\nxWYtBWg8foI6H71J25iDGFYFA7ihY1GwDDlfd/RmYzBHD3nrVRdzYvvqKZgAfS9J\nvQnqfMVBRNYlP6osvgf394BvOTCrXh7WEQX6zLD0PO1wKgIEHhBzAgMBAAE=
+        app: emr-acelera-ecomm
+        on: master
+        run: "python manage.py migrate"
