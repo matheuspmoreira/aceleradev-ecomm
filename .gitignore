@@ -1,0 +1,9 @@
+# Indicando para o Git quais padrões de arq. ignorar.
+
+# Arquivos compilados do Python
+*.pyc
+# Banco de dados
+*.sqlite3
+# Pasta do Pycache
+__pycache__
+docs/_build
